@@ -1,0 +1,44 @@
+.base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 84px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font: inherit;
+  font-size: 0.88rem;
+  padding: 0 12px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.default {
+  background: #ffffff;
+  color: #0f172a;
+  cursor: pointer;
+}
+
+.default:hover {
+  background: #f3f4f6;
+}
+
+.primary {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+  height: 40px;
+  min-width: 112px;
+  cursor: pointer;
+}
+
+.primary:hover {
+  background: #111827;
+}
+
+.disabled {
+  color: #9ca3af;
+  border-color: #d1d5db;
+  background: #f9fafb;
+  cursor: not-allowed;
+}

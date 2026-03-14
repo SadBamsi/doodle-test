@@ -1,0 +1,46 @@
+.filterBar {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 12px 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.fieldCompact {
+  display: grid;
+  gap: 6px;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.inputCompact {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 9px 10px;
+  font: inherit;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .filterBar {
+    grid-template-columns: 1fr;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+@media (min-width: 768px) {
+  .filterBar {
+    grid-template-columns:
+      minmax(120px, 160px)
+      minmax(180px, 1fr)
+      minmax(180px, 1fr)
+      auto
+      auto;
+    align-items: end;
+  }
+}

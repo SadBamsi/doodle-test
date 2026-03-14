@@ -1,0 +1,14 @@
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+@media (max-width: 768px) {
+  .pagination {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}

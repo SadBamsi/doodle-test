@@ -1,0 +1,30 @@
+.root {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 12px;
+  background: #fafafa;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.author {
+  font-size: 0.95rem;
+}
+
+.timestamp {
+  color: #6b7280;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.text {
+  margin: 8px 0 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.45;
+}

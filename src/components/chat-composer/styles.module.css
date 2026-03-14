@@ -1,0 +1,50 @@
+.composer {
+  padding: 16px 20px 20px;
+  border-top: 1px solid #e5e7eb;
+  display: grid;
+  gap: 12px;
+}
+
+.formFields {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+@media (max-width: 768px) {
+  .composer {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+@media (min-width: 768px) {
+  .formFields {
+    grid-template-columns: 220px 1fr;
+    align-items: end;
+  }
+}
