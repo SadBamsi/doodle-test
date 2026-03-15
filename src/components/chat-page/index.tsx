@@ -1,52 +1,50 @@
 import type { ChatViewModel } from "@/lib/chat-view-model";
 
-import { ChatComposer } from "@/components/chat-composer";
+import { ChatClient } from "@/components/chat-client";
 import { ChatFilters } from "@/components/chat-filters";
-import { ChatMessages } from "@/components/chat-messages";
-import { ChatPagination } from "@/components/chat-pagination";
 
 import styles from "./styles.module.css";
 
 type ChatPageProps = {
   view: ChatViewModel;
-  onSendMessage: (formData: FormData) => Promise<void>;
+  onSendMessage: (formData: FormData) => Promise<{ error: string | null }>;
 };
 
 export function ChatPage({ view, onSendMessage }: ChatPageProps) {
   return (
     <section className={styles.chatCard}>
       <header className={styles.header}>
-        <div>
+        <div className={styles.avatar}>💬</div>
+        <div className={styles.headerInfo}>
           <h1 className={styles.title}>Team Chat</h1>
           <p className={styles.subtitle}>
-            Messages are fetched on the server via GET /api/v1/messages.
+            {view.messages.length > 0
+              ? `${view.messages.length} messages`
+              : "no messages"}
           </p>
         </div>
-        <p className={styles.pageInfo}>Limit: {view.limit}</p>
       </header>
 
-      <ChatFilters
-        limit={view.limit}
-        before={view.before}
-        after={view.after}
-        latestHref={view.latestHref}
-      />
+      <details className={styles.filtersDetails}>
+        <summary className={styles.filtersSummary}>⚙️ Filters</summary>
+        <div className={styles.filtersPanel}>
+          <ChatFilters
+            limit={view.limit}
+            before={view.before}
+            after={view.after}
+            latestHref={view.latestHref}
+          />
+        </div>
+      </details>
 
-      <ChatMessages
+      <ChatClient
         messages={view.messages}
-        queryWarning={view.queryWarning}
-        actionError={view.actionError}
-        sent={view.sent}
-        loadError={view.loadError}
-      />
-
-      <ChatPagination newerHref={view.newerHref} olderHref={view.olderHref} />
-
-      <ChatComposer
         limit={view.limit}
         before={view.before}
         after={view.after}
-        onSendMessage={onSendMessage}
+        queryWarning={view.queryWarning}
+        loadError={view.loadError}
+        sendAction={onSendMessage}
       />
     </section>
   );

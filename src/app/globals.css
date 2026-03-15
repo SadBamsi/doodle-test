@@ -20,7 +20,15 @@ body {
     Arial,
     sans-serif;
   color: #0f172a;
-  background: #f3f4f6;
+  background: linear-gradient(
+    160deg,
+    #a0c4e4 0%,
+    #bdd8f0 30%,
+    #d6ecf7 60%,
+    #e6f0f9 100%
+  );
+  background-attachment: fixed;
+  min-height: 100dvh;
 }
 
 a {

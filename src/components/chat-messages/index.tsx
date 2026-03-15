@@ -1,3 +1,7 @@
+"use client";
+
+import type { RefObject } from "react";
+
 import { Message } from "@/components/message";
 import type { IMessage } from "@/types";
 
@@ -6,27 +10,23 @@ import styles from "./styles.module.css";
 type ChatMessagesProps = {
   messages: IMessage[];
   queryWarning: string | null;
-  actionError: string | null;
-  sent: boolean;
   loadError: string | null;
+  messagesAreaRef?: RefObject<HTMLDivElement | null>;
 };
 
 export function ChatMessages({
   messages,
   queryWarning,
-  actionError,
-  sent,
   loadError,
+  messagesAreaRef,
 }: ChatMessagesProps) {
   return (
     <section className={styles.root}>
       {queryWarning ? (
         <p className={styles.errorBanner}>{queryWarning}</p>
       ) : null}
-      {actionError ? <p className={styles.errorBanner}>{actionError}</p> : null}
-      {sent ? <p className={styles.successBanner}>Message sent.</p> : null}
 
-      <div className={styles.messagesArea}>
+      <div ref={messagesAreaRef} className={styles.messagesArea}>
         {loadError ? (
           <p className={styles.errorBanner}>{loadError}</p>
         ) : messages.length === 0 ? (

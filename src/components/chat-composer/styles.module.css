@@ -1,50 +1,37 @@
 .composer {
-  padding: 16px 20px 20px;
-  border-top: 1px solid #e5e7eb;
-  display: grid;
-  gap: 12px;
-}
-
-.formFields {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
-
-.field {
-  display: grid;
-  gap: 6px;
-}
-
-.label {
-  font-size: 0.85rem;
-  color: #4b5563;
-}
-
-.input,
-.textarea {
-  width: 100%;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
   padding: 10px 12px;
-  font: inherit;
+  background: #f0f4f9;
+  border-top: 1px solid #d4dde8;
 }
 
 .textarea {
-  resize: vertical;
-  min-height: 90px;
+  flex: 1;
+  border: 1px solid #c9d6e3;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font: inherit;
+  font-size: 0.93rem;
+  background: #ffffff;
+  resize: none;
+  min-height: 42px;
+  max-height: 140px;
+  line-height: 1.4;
+  outline: none;
 }
 
-@media (max-width: 768px) {
-  .composer {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
+.textarea:focus {
+  border-color: #4eadde;
 }
 
-@media (min-width: 768px) {
-  .formFields {
-    grid-template-columns: 220px 1fr;
-    align-items: end;
-  }
+.sendButton {
+  flex-shrink: 0;
+  width: 42px !important;
+  min-width: 42px !important;
+  height: 42px;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  font-size: 1rem;
 }

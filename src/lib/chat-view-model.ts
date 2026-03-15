@@ -16,8 +16,6 @@ export type ChatViewModel = {
   newerHref: string | null;
   loadError: string | null;
   queryWarning: string | null;
-  actionError: string | null;
-  sent: boolean;
 };
 
 function getText(value: SearchParamValue): string | undefined {
@@ -90,9 +88,6 @@ export async function buildChatViewModel(
   const before = parseIsoTimestamp(getText(params.before));
   const after = parseIsoTimestamp(getText(params.after));
 
-  const sent = getText(params.sent) === "1";
-  const actionError = getText(params.error) ?? null;
-
   let queryWarning: string | null = null;
 
   const request: IGetMessagesRequest = {
@@ -139,8 +134,6 @@ export async function buildChatViewModel(
           : null,
       loadError: null,
       queryWarning,
-      actionError,
-      sent,
     };
   } catch (error) {
     return {
@@ -153,8 +146,6 @@ export async function buildChatViewModel(
       newerHref: null,
       loadError: toErrorMessage(error),
       queryWarning,
-      actionError,
-      sent,
     };
   }
 }

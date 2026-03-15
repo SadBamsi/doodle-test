@@ -3,15 +3,20 @@ import type { IMessage } from "@/types";
 
 import styles from "./styles.module.css";
 
+const CURRENT_USER = "user";
+
 type MessageProps = {
   message: IMessage;
 };
 
 export function Message({ message }: MessageProps) {
+  const isOwn = message.author === CURRENT_USER;
+
   return (
-    <li className={styles.root}>
-      <div className={styles.meta}>
-        <strong className={styles.author}>{message.author}</strong>
+    <li className={`${styles.root} ${isOwn ? styles.own : styles.other}`}>
+      {!isOwn && <span className={styles.authorName}>{message.author}</span>}
+      <div className={isOwn ? styles.bubbleOwn : styles.bubbleOther}>
+        <p className={styles.text}>{message.message}</p>
         <time
           className={styles.timestamp}
           dateTime={toIsoTimestampOrNow(message.createdAt)}
@@ -19,7 +24,6 @@ export function Message({ message }: MessageProps) {
           {formatDateTime(message.createdAt)}
         </time>
       </div>
-      <p className={styles.text}>{message.message}</p>
     </li>
   );
 }
